@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "18228_펭귄추락대책위원회", "18228_펭귄추락대책위원회\18228_펭귄추락대책위원회.vcxproj", "{3EBFBB21-1791-4991-9C70-151856A41722}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Debug|x64.ActiveCfg = Debug|x64
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Debug|x64.Build.0 = Debug|x64
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Debug|x86.ActiveCfg = Debug|Win32
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Debug|x86.Build.0 = Debug|Win32
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Release|x64.ActiveCfg = Release|x64
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Release|x64.Build.0 = Release|x64
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Release|x86.ActiveCfg = Release|Win32
+		{3EBFBB21-1791-4991-9C70-151856A41722}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C12B716-DDE9-428C-9217-12430B7274C9}
+	EndGlobalSection
+EndGlobal

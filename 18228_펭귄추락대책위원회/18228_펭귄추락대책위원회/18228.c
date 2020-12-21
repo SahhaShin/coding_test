@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main() {
+	//얼음 수를 입력
+	int ice_num = 0;
+	int pang_position = 0; //펭귄 위치
+	int left_min_power=1000000001;//펭귄 이전 가장 작은 파워
+	int right_min_power = 1000000001;//펭귄 이후 가장 작은 파워
+	scanf("%d", &ice_num);
+	int* power = (int*)malloc(sizeof(int)*ice_num);
+	for (int i = 0; i < ice_num; i++) {
+		//깨뜨리는데 드는 힘
+		scanf("%d", power+i);
+	}
+
+	//-1위치, 펭귄위치 파악
+	for (int i = 0; i < ice_num; i++) {
+		if (*(power + i) == -1)
+			pang_position = i;
+	}
+
+	//펭귄 위치 기준 왼쪽 탐색
+	for (int i = 0; i < pang_position; i++) {
+		if (left_min_power > * (power + i))
+			left_min_power = *(power + i);
+	}
+
+	//펭귄 위치 기준 오른쪽 탐색
+	for (int i = pang_position+1; i < ice_num; i++) {
+		if (right_min_power > * (power + i))
+			right_min_power = *(power + i);
+	}
+
+	//가장 작은 힘 산정
+	printf("%d", left_min_power + right_min_power);
+
+	return 0;
+}
