@@ -1,0 +1,7 @@
+﻿  15954.c
+C:\backjoon\15954_인형들\15954_인형들\15954.c(17,9): warning C4477: 'scanf' : 서식 문자열 '%ld'에 'long *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 '__int64 *'입니다.
+C:\backjoon\15954_인형들\15954_인형들\15954.c(17,9): message : 서식 문자열에서 '%lld'을(를) 사용하는 것이 좋습니다.
+C:\backjoon\15954_인형들\15954_인형들\15954.c(17,9): message : 서식 문자열에서 '%I64d'을(를) 사용하는 것이 좋습니다.
+C:\backjoon\15954_인형들\15954_인형들\15954.c(15,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\backjoon\15954_인형들\15954_인형들\15954.c(17,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  15954_인형들.vcxproj -> C:\backjoon\15954_인형들\Debug\15954_인형들.exe
