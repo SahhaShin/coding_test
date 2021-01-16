@@ -1,10 +1,11 @@
 #include<stdio.h>
 #include<math.h>
-//https://www.acmicpc.net/board/view/41422 도움받음
+//https://www.acmicpc.net/board/view/41422
+//https://www.acmicpc.net/board/view/49811
 int main() {
 	int doll_number = 0;
 	int select = 0;//연속적으로 놓여진 인형 몇 개를 비교할래?
-	long long favorit[501] = { 0, };
+	long double favorit[501] = { 0, };
 
 	long double average = 0;
 	
@@ -14,7 +15,7 @@ int main() {
 	//입력받기
 	scanf("%d%d", &doll_number,&select);
 	for (int i = 0; i < doll_number; i++) {
-		scanf("%ld", &favorit[i]);
+		scanf("%LF", &favorit[i]);
 	}
 
 
@@ -31,15 +32,18 @@ int main() {
 				//연속된 k개의 인형의 평균을 구한다.
 				for (int j = 0; j < select + rem; j++) {
 					
-					average += favorit[i + j];
+					average = average+favorit[i + j];
+					//printf("\ni=%d, j=%d, sum = %LF\n", i,j,average);
 				}
-				average = average / select;
-
+				average = average / ((long double)select + (long double)rem);
+				//printf("\naverage = %LF\n", average);
 				//분산구하기(값-평균)^2
 				for (int a = 0; a < select + rem; a++) {
-					v += (favorit[i + a] - average) * (favorit[i + a] - average);
+					v =v+ (favorit[i + a] - average) * (favorit[i + a] - average);
+					//printf("\nv_sum = %lf\n", v);
 				}
-				v = v / select;
+				v = v / ((long double)select + (long double)rem);
+				//printf("\nv = %LF\n", v);
 				
 
 
@@ -62,7 +66,7 @@ int main() {
 		
 	}
 	//결과도출:구한 분산 표준편차로 변환
-	printf("%.11lf",sqrt(min_v));
+	printf("%.11LF",sqrt(min_v));
 	
 	return 0;
 }
