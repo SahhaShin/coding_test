@@ -1,0 +1,107 @@
+//2741번 N찍기
+//#include<stdio.h>
+//int main() {
+//	int number=0;
+//	scanf("%d", &number);
+//	for (int i = 0; i < number; i++) {
+//		printf("%d\n", i + 1);
+//	}
+//	
+//	return 0;
+//}
+
+//2742번 기찍N
+//#include<stdio.h>
+//int main() {
+//	int number=0;
+//	scanf("%d", &number);
+//	for (int i = number; i > 0; i--) {
+//		printf("%d\n", i);
+//	}
+//	
+//	return 0;
+//}
+
+//11021번 A+B-7
+//#include<stdio.h>
+//int main() {
+//	int number=0;
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d", &number);
+//	for (int i = 0; i < number; i++) {
+//		scanf("%d %d", &a, &b);
+//		printf("Case #%d: %d\n", i+1,a+b);
+//	}
+//	
+//	return 0;
+//}
+
+//11021번 A+B-8
+//#include<stdio.h>
+//int main() {
+//	int number=0;
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d", &number);
+//	for (int i = 0; i < number; i++) {
+//		scanf("%d %d", &a, &b);
+//		printf("Case #%d: %d + %d = %d\n", i+1,a,b,a+b);
+//	}
+//	
+//	return 0;
+//}
+
+//11021번 A+B-5
+//#include<stdio.h>
+//int main() {
+//
+//	int a = 1;
+//	int b = 1;
+//
+//	while(a!=0 && b!=0) {
+//		scanf("%d %d", &a, &b);
+//		if (a == 0 && b == 0)
+//			break;
+//		printf("%d\n", a + b);
+//	}
+//
+//	return 0;
+//}
+
+//11021번 A+B-4 -->블로그
+//#include<stdio.h>
+//int main() {
+//
+//	int a = 1;
+//	int b = 1;
+//
+//	while(scanf("%d %d", &a, &b)!= EOF) {
+//	
+//
+//		printf("%d\n", a + b);
+//	}
+//
+//	return 0;
+//}
+
+//10818번 최소, 최대 -> 블로그 max 를 0으로해서 틀림
+//#include<stdio.h>
+//int main() {
+//	int number = 0;
+//	int max = -1000001;
+//	int min = 1000001;
+//	int num = 0;
+//	scanf("%d", &number);
+//
+//	for (int i = 0; i < number; i++) {
+//		scanf("%d", &num);
+//		if (num > max)
+//			max = num;
+//		if (num < min)
+//			min = num;
+//	}
+//	printf("%d %d", min, max);
+//
+//	return 0;
+//}
