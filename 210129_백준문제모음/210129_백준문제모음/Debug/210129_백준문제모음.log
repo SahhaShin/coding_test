@@ -1,5 +1,2 @@
 ﻿  210129.c
-C:\backjoon\210129_백준문제모음\210129_백준문제모음\210129.c(125,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\backjoon\210129_백준문제모음\210129_백준문제모음\210129.c(127,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\backjoon\210129_백준문제모음\210129_백준문제모음\210129.c(129,4): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   210129_백준문제모음.vcxproj -> C:\backjoon\210129_백준문제모음\Debug\210129_백준문제모음.exe
