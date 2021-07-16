@@ -19,7 +19,7 @@ while(number!=1):
     elif(number%nanum==0):
         print(nanum)
         number=number//nanum
-    #나눠지지 않으면 nanum을 1 더해준다.
+    #나눠지지 않으면 nanum을 1 더해준다
     else:
         nanum=nanum+1
         
