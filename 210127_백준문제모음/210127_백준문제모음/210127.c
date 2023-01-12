@@ -1,0 +1,96 @@
+//10430번 나머지
+//#include<stdio.h>
+//int main() {
+//	int a=0;
+//	int b=0;
+//	int c=0;
+//	scanf("%d%d%d", &a,&b,&c);
+//	
+//	printf("%d\n",(a+b)%c);
+//	printf("%d\n", ((a % c)+(b%c))%c);
+//	printf("%d\n", (a * b) % c);
+//	printf("%d", ((a % c) * (b % c)) % c);
+//	return 0;
+//}
+
+//2588번 곱셈
+//#include<stdio.h>
+//int main() {
+//	int number1 = 0;
+//	int number2 = 0;
+//	int total = 0;
+//	int ten = 1;
+//	scanf("%d%d", &number1, &number2);
+//	for (int i = 0; i < 3; i++) {
+//		printf("%d\n", number1 * (number2 % 10));
+//		total = total + (number1 * (number2 % 10))*ten;
+//		ten = ten * (10);
+//		number2 = number2 / 10;
+//	}
+//	printf("%d", total);
+//	return 0;
+//}
+
+//14681번 사분면 고르기
+//#include<stdio.h>
+//int main() {
+//	int x = 0;
+//	int y = 0;
+//	scanf("%d%d", &x, &y);
+//
+//	if (x > 0 && y > 0)
+//		printf("1");
+//	else if ((x < 0 && y>0))
+//		printf("2");
+//	else if (x < 0 && y < 0)
+//		printf("3");
+//	else
+//		printf("4");
+//	return 0;
+//}
+
+//2884번 알람 시계 - > 블로그
+//#include<stdio.h>
+//int main() {
+//	int hour = 0;
+//	int minute = 0;
+//	scanf("%d %d", &hour, &minute);
+//	minute = minute - 45;
+//	if (minute < 0) {
+//		hour = hour - 1;
+//		if (hour < 0)
+//			hour = hour + 24;
+//		minute = minute + 60;
+//	}
+//	printf("%d %d", hour, minute);
+//	return 0;
+//}
+
+//10950번
+//#include<stdio.h>
+//int main() {
+//	int count = 0;
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d", &count);
+//	for (int i = 0; i < count; i++) {
+//		scanf("%d %d", &a, &b);
+//		printf("%d\n", a + b);
+//	}
+//	
+//	
+//	return 0;
+//}
+
+//8393번 합
+//#include<stdio.h>
+//int main() {
+//	int num = 0;
+//	int result = 0;
+//	scanf("%d", &num);
+//	for (int i = num; i > 0; i--) {
+//		result += i;
+//	}
+//	printf("%d", result);
+//	return 0;
+//}

@@ -1,0 +1,238 @@
+#include<stdio.h>
+#include<stdlib.h>
+void linked(int a, int b);
+struct birus {
+	int computer;
+	struct birus* next;
+};
+
+//헤드를 선언
+struct birus* head[101] = { NULL, };
+
+int one_index=0;
+int main() {
+	int comnum=0; //컴퓨터 수
+	int connect = 0; //연결된 컴퓨터 쌍의 수
+	int a, b; //연결된 컴퓨터 1쌍
+	int count = 0;//바이러스 걸린 컴퓨터 수
+
+	scanf("%d", &comnum);
+	scanf("%d", &connect);
+	for (int i = 0; i < connect; i++) {
+		scanf("%d %d", &a, &b);
+		//연결된 컴퓨터 1쌍을 링크드로 만들어준다.
+		linked(a, b);
+	}
+
+	//바이러스에 걸린 컴퓨터 세기
+	struct birus* next_node = (struct birus*)malloc(sizeof(struct birus));
+	next_node = head[one_index];
+	while (next_node != NULL) {
+		count++;
+		next_node = next_node->next;
+
+	}
+
+	printf("%d", count-1);
+
+	
+
+
+	printf("\n");
+	next_node = head[0];
+	while (next_node != NULL) {
+		printf("%d\t", next_node->computer);
+		next_node = next_node->next;
+
+	}
+
+	printf("\n");
+	
+	next_node = head[1];
+	while (next_node != NULL) {
+		printf("%d\t", next_node->computer);
+		next_node = next_node->next;
+
+	}
+	printf("\n");
+	next_node = head[2];
+	while (next_node != NULL) {
+		printf("%d\t", next_node->computer);
+		next_node = next_node->next;
+
+	}
+	printf("\n");
+	next_node = head[3];
+	while (next_node != NULL) {
+		printf("%d\t", next_node->computer);
+		next_node = next_node->next;
+
+	}
+
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////링크드 리스트 //////////////////////////
+
+void linked(int a, int b) {
+	
+	int a_switch = NULL;
+	int b_switch = NULL;
+	struct birus* next_node = (struct birus*)malloc(sizeof(struct birus));
+
+
+	//head에 아무것도 없으면 아무 데이터도 없다는 뜻입니다.
+	//새로운 head 생성
+	if (head[0] == NULL) {
+		struct birus* a_node = (struct birus*)malloc(sizeof(struct birus));
+		struct birus* b_node = (struct birus*)malloc(sizeof(struct birus));
+
+		a_node->computer = a;
+		b_node->computer = b;
+		a_node->next = b_node;
+		b_node->next = NULL;
+		
+		head[0] = a_node;
+	
+		head[0]->computer = a_node->computer;
+
+		if (a == 1 || b == 1) {
+			one_index = 0;
+		}
+
+	}
+	else {
+		//head가 null이 아니면 뭔 값이 있다는 뜻
+		//head를 따라가서 만약 a컴퓨터가 이미 들어와있다면 생성x, 없다면 생성 o
+		//head는 하나가 아니다. 따라서 모든 head를 봐야한다.
+		//스위치가 0이 아니면 새로운 노드를 만들지 않아도 된다는 뜻, 스위치는 같다고 표시된 head의 인덱스를 가리킴
+		for (int i = 0; i < 101; i++) {
+			
+			next_node = head[i];
+			
+
+			while (next_node != NULL) {
+
+				if ((next_node->computer)==a) {
+					
+					a_switch = i+1;
+					next_node = next_node->next;
+			
+
+				}
+				else if ((next_node->computer) == b) {
+					
+					b_switch = i+1;
+					next_node = next_node->next;
+					
+				}
+				else {
+					next_node = next_node->next;
+					if (next_node == NULL)
+						break;
+				}
+			}
+		}
+		//둘다 해당 컴퓨터가 없으면 새로운 노드를 생성 후, 새로운 헤드에 배정
+		if ((a_switch == NULL) && (b_switch == NULL)) {
+			struct birus* a_node = (struct birus*)malloc(sizeof(struct birus));
+			struct birus* b_node = (struct birus*)malloc(sizeof(struct birus));
+
+			a_node->computer = a;
+			b_node->computer = b;
+			a_node->next = b_node;
+			b_node->next = NULL;
+
+			//비어있는 head 찾기 -> 새로운 head에 a_node를 배정
+			for (int k = 0; k < 150; k++) {
+				if (head[k] == NULL) {
+					head[k] = a_node;
+					if (a == 1 || b == 1) {
+						one_index = k;
+					}
+					break;
+				}
+			}
+			
+			
+			
+		}
+
+		//a컴퓨터는 있는데 b 컴퓨터가 없으면 a가 있는 head 끝에 b를 추가한다.
+		else if ((a_switch != NULL) && (b_switch == NULL)) {
+			struct birus* b_node = (struct birus*)malloc(sizeof(struct birus));
+			b_node->computer = b;
+			b_node->next = NULL;
+			struct birus* next_a_node = (struct birus*)malloc(sizeof(struct birus));
+			next_a_node = head[a_switch-1];
+			while (next_a_node->next != NULL) {	
+				next_a_node = next_a_node->next;			
+			}
+
+			next_a_node->next = b_node;
+
+			if (a == 1 || b == 1) {
+				one_index = a_switch-1;
+			}
+		
+		}
+		else if ((a_switch == NULL) && (b_switch != NULL)) {
+			struct birus* a_node = (struct birus*)malloc(sizeof(struct birus));
+			a_node->computer = b;
+			a_node->next = NULL;
+			struct birus* next_b_node = (struct birus*)malloc(sizeof(struct birus));//연산해야할 다음 노드를 알려준다.
+			next_b_node = head[b_switch-1];
+			while (next_b_node->next != NULL) {
+
+				next_b_node = next_b_node->next;
+
+			}
+
+			next_b_node->next=a_node;
+
+			if (a == 1 || b == 1) {
+
+				one_index = b_switch-1;
+			}
+
+		}
+		else {
+			//둘 다 있으면 스위치가 둘다 같은지 확인
+			if (a_switch == b_switch) {
+				//아무것도 안해도 됨^^
+			}
+			else {
+				//안 같으면 둘을 연결해줘야함
+				//a기준으로 b를 붙여주자
+				struct birus* next_a_node = (struct birus*)malloc(sizeof(struct birus));//연산해야할 다음 노드를 알려준다.
+				next_a_node = head[a_switch-1];
+				while (next_a_node->next != NULL) {
+
+					next_a_node = next_a_node->next;
+
+				}
+				next_a_node->next = head[b_switch-1];
+
+				if (a == 1 || b == 1) {
+					one_index = a_switch-1;
+				}
+			
+			}
+		}
+	}
+
+}
