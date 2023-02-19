@@ -11,7 +11,7 @@ int main() {
 		scanf("%d", &time[i]);
 	}
 
-	//Á¤·Ä
+	//ÃÂ¤Â·Ã„
 	for (int i = 0; i < number-1; i++) {
 		for (int j = 0; j < number-1-i; j++) {
 			if (time[j] > time[j + 1]) {
@@ -22,7 +22,7 @@ int main() {
 		}
 	}
 
-	//±â´Ù¸®´Â ½Ã°£ ÃÖ¼Ò
+	//Â±Ã¢Â´Ã™Â¸Â®Â´Ã‚ Â½ÃƒÂ°Â£ ÃƒÃ–Â¼Ã’
 	for (int i = 0; i < number; i++) {
 		wait += time[i];
 		result += wait;
