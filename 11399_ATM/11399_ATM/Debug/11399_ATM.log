@@ -1,4 +1,0 @@
-﻿  11399.c
-C:\backjoon\11399_ATM\11399_ATM\11399.c(9,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\backjoon\11399_ATM\11399_ATM\11399.c(11,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  11399_ATM.vcxproj -> C:\backjoon\11399_ATM\Debug\11399_ATM.exe
