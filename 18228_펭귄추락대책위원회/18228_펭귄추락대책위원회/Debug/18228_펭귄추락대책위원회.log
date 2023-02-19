@@ -1,4 +1,0 @@
-﻿  18228.c
-C:\backjoon\18228_펭귄추락대책위원회\18228_펭귄추락대책위원회\18228.c(9,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\backjoon\18228_펭귄추락대책위원회\18228_펭귄추락대책위원회\18228.c(13,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  18228_펭귄추락대책위원회.vcxproj -> C:\backjoon\18228_펭귄추락대책위원회\Debug\18228_펭귄추락대책위원회.exe
