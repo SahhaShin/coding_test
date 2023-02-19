@@ -1,5 +1,0 @@
-﻿  10828.c
-C:\backjoon\10828_스택\10828_스택\10828.c(49,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\backjoon\10828_스택\10828_스택\10828.c(53,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\backjoon\10828_스택\10828_스택\10828.c(58,4): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  10828_스택.vcxproj -> C:\backjoon\10828_스택\Debug\10828_스택.exe
