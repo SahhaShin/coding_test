@@ -1,37 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
 int main() {
-	//¾óÀ½ ¼ö¸¦ ÀÔ·Â
+	//ì–¼ìŒ ìˆ˜ë¥¼ ì…ë ¥
 	int ice_num = 0;
-	int pang_position = 0; //Æë±Ï À§Ä¡
-	int left_min_power=1000000001;//Æë±Ï ÀÌÀü °¡Àå ÀÛÀº ÆÄ¿ö
-	int right_min_power = 1000000001;//Æë±Ï ÀÌÈÄ °¡Àå ÀÛÀº ÆÄ¿ö
+	int pang_position = 0; //í­ê·„ ìœ„ì¹˜
+	int left_min_power=1000000001;//í­ê·„ ì´ì „ ê°€ì¥ ì‘ì€ íŒŒì›Œ
+	int right_min_power = 1000000001;//í­ê·„ ì´í›„ ê°€ì¥ ì‘ì€ íŒŒì›Œ
 	scanf("%d", &ice_num);
 	int* power = (int*)malloc(sizeof(int)*ice_num);
 	for (int i = 0; i < ice_num; i++) {
-		//±ú¶ß¸®´Âµ¥ µå´Â Èû
+		//ê¹¨ëœ¨ë¦¬ëŠ”ë° ë“œëŠ” í˜
 		scanf("%d", power+i);
 	}
 
-	//-1À§Ä¡, Æë±ÏÀ§Ä¡ ÆÄ¾Ç
+	//-1ìœ„ì¹˜, í­ê·„ìœ„ì¹˜ íŒŒì•…
 	for (int i = 0; i < ice_num; i++) {
 		if (*(power + i) == -1)
 			pang_position = i;
 	}
 
-	//Æë±Ï À§Ä¡ ±âÁØ ¿ŞÂÊ Å½»ö
+	//í­ê·„ ìœ„ì¹˜ ê¸°ì¤€ ì™¼ìª½ íƒìƒ‰
 	for (int i = 0; i < pang_position; i++) {
 		if (left_min_power > * (power + i))
 			left_min_power = *(power + i);
 	}
 
-	//Æë±Ï À§Ä¡ ±âÁØ ¿À¸¥ÂÊ Å½»ö
+	//í­ê·„ ìœ„ì¹˜ ê¸°ì¤€ ì˜¤ë¥¸ìª½ íƒìƒ‰
 	for (int i = pang_position+1; i < ice_num; i++) {
 		if (right_min_power > * (power + i))
 			right_min_power = *(power + i);
 	}
 
-	//°¡Àå ÀÛÀº Èû »êÁ¤
+	//ê°€ì¥ ì‘ì€ í˜ ì‚°ì •
 	printf("%d", left_min_power + right_min_power);
 
 	return 0;
