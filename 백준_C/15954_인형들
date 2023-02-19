@@ -4,15 +4,15 @@
 //https://www.acmicpc.net/board/view/49811
 int main() {
 	int doll_number = 0;
-	int select = 0;//¿¬¼ÓÀûÀ¸·Î ³õ¿©Áø ÀÎÇü ¸î °³¸¦ ºñ±³ÇÒ·¡?
+	int select = 0;//ì—°ì†ì ìœ¼ë¡œ ë†“ì—¬ì§„ ì¸í˜• ëª‡ ê°œë¥¼ ë¹„êµí• ë˜?
 	long double favorit[501] = { 0, };
 
 	long double average = 0;
 	
-	long double v = 0;//ºĞ»ê
+	long double v = 0;//ë¶„ì‚°
 	long double min_v = 987654321000000;
 
-	//ÀÔ·Â¹Ş±â
+	//ì…ë ¥ë°›ê¸°
 	scanf("%d%d", &doll_number,&select);
 	for (int i = 0; i < doll_number; i++) {
 		scanf("%LF", &favorit[i]);
@@ -20,16 +20,16 @@ int main() {
 
 
 
-	//k°³ Æò±Õ ±¸ÇÏ°í ¿ÀÂ÷ -> ¿ÀÂ÷ÀÇ ÇÕ ÃÖ¼Ò ±¸ÇÏ±â
+	//kê°œ í‰ê·  êµ¬í•˜ê³  ì˜¤ì°¨ -> ì˜¤ì°¨ì˜ í•© ìµœì†Œ êµ¬í•˜ê¸°
 	for (int i = 0; i < doll_number; i++) {
 		
 
-		//k°³ÀÇ ÀÎÇüÀÌ ÀÖÀ¸¸é ¿¬»ê -> 1 2 3 4 5¶ó´Â ÀÎÇüÀÌ ÀÖ°í k°¡ 3ÀÌ¶ó¸é 3¹øÂ°ÀÎÇü¿¡ ´ëÇÑ ¿¬»êÀº µÚ¿¡ 3-1°³ÀÇ ÀÎÇüÀÌ ´õ ÀÖ¾î¾ß °¡´É
+		//kê°œì˜ ì¸í˜•ì´ ìˆìœ¼ë©´ ì—°ì‚° -> 1 2 3 4 5ë¼ëŠ” ì¸í˜•ì´ ìˆê³  kê°€ 3ì´ë¼ë©´ 3ë²ˆì§¸ì¸í˜•ì— ëŒ€í•œ ì—°ì‚°ì€ ë’¤ì— 3-1ê°œì˜ ì¸í˜•ì´ ë” ìˆì–´ì•¼ ê°€ëŠ¥
 		if (doll_number - (i + 1) >= select - 1) {
-			//5°³ ÀÎÇü Áß 3°³ ¿¬¼ÓÀÌ¸é 3,4,5±îÁö °¡´É
+			//5ê°œ ì¸í˜• ì¤‘ 3ê°œ ì—°ì†ì´ë©´ 3,4,5ê¹Œì§€ ê°€ëŠ¥
 			for (int rem = 0; rem <= doll_number - select-i;rem++) {
 				
-				//¿¬¼ÓµÈ k°³ÀÇ ÀÎÇüÀÇ Æò±ÕÀ» ±¸ÇÑ´Ù.
+				//ì—°ì†ëœ kê°œì˜ ì¸í˜•ì˜ í‰ê· ì„ êµ¬í•œë‹¤.
 				for (int j = 0; j < select + rem; j++) {
 					
 					average = average+favorit[i + j];
@@ -37,7 +37,7 @@ int main() {
 				}
 				average = average / ((long double)select + (long double)rem);
 				//printf("\naverage = %LF\n", average);
-				//ºĞ»ê±¸ÇÏ±â(°ª-Æò±Õ)^2
+				//ë¶„ì‚°êµ¬í•˜ê¸°(ê°’-í‰ê· )^2
 				for (int a = 0; a < select + rem; a++) {
 					v =v+ (favorit[i + a] - average) * (favorit[i + a] - average);
 					//printf("\nv_sum = %lf\n", v);
@@ -47,13 +47,13 @@ int main() {
 				
 
 
-				//ÃÖ¼ÒºĞ»ê±¸ÇÏ±â
+				//ìµœì†Œë¶„ì‚°êµ¬í•˜ê¸°
 				if (sqrt(min_v) > sqrt(v)) {
 					min_v = v;
 
 				}
 
-				//°ª ÃÊ±âÈ­
+				//ê°’ ì´ˆê¸°í™”
 				average = 0;
 				v = 0;
 			}
@@ -65,7 +65,7 @@ int main() {
 		
 		
 	}
-	//°á°úµµÃâ:±¸ÇÑ ºĞ»ê Ç¥ÁØÆíÂ÷·Î º¯È¯
+	//ê²°ê³¼ë„ì¶œ:êµ¬í•œ ë¶„ì‚° í‘œì¤€í¸ì°¨ë¡œ ë³€í™˜
 	printf("%.11LF",sqrt(min_v));
 	
 	return 0;
