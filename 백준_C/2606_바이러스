@@ -6,25 +6,25 @@ struct birus {
 	struct birus* next;
 };
 
-//Çìµå¸¦ ¼±¾ğ
+//í—¤ë“œë¥¼ ì„ ì–¸
 struct birus* head[101] = { NULL, };
 
 int one_index=0;
 int main() {
-	int comnum=0; //ÄÄÇ»ÅÍ ¼ö
-	int connect = 0; //¿¬°áµÈ ÄÄÇ»ÅÍ ½ÖÀÇ ¼ö
-	int a, b; //¿¬°áµÈ ÄÄÇ»ÅÍ 1½Ö
-	int count = 0;//¹ÙÀÌ·¯½º °É¸° ÄÄÇ»ÅÍ ¼ö
+	int comnum=0; //ì»´í“¨í„° ìˆ˜
+	int connect = 0; //ì—°ê²°ëœ ì»´í“¨í„° ìŒì˜ ìˆ˜
+	int a, b; //ì—°ê²°ëœ ì»´í“¨í„° 1ìŒ
+	int count = 0;//ë°”ì´ëŸ¬ìŠ¤ ê±¸ë¦° ì»´í“¨í„° ìˆ˜
 
 	scanf("%d", &comnum);
 	scanf("%d", &connect);
 	for (int i = 0; i < connect; i++) {
 		scanf("%d %d", &a, &b);
-		//¿¬°áµÈ ÄÄÇ»ÅÍ 1½ÖÀ» ¸µÅ©µå·Î ¸¸µé¾îÁØ´Ù.
+		//ì—°ê²°ëœ ì»´í“¨í„° 1ìŒì„ ë§í¬ë“œë¡œ ë§Œë“¤ì–´ì¤€ë‹¤.
 		linked(a, b);
 	}
 
-	//¹ÙÀÌ·¯½º¿¡ °É¸° ÄÄÇ»ÅÍ ¼¼±â
+	//ë°”ì´ëŸ¬ìŠ¤ì— ê±¸ë¦° ì»´í“¨í„° ì„¸ê¸°
 	struct birus* next_node = (struct birus*)malloc(sizeof(struct birus));
 	next_node = head[one_index];
 	while (next_node != NULL) {
@@ -86,7 +86,7 @@ int main() {
 
 
 ///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////¸µÅ©µå ¸®½ºÆ® //////////////////////////
+///////////////////////////////////ë§í¬ë“œ ë¦¬ìŠ¤íŠ¸ //////////////////////////
 
 void linked(int a, int b) {
 	
@@ -95,8 +95,8 @@ void linked(int a, int b) {
 	struct birus* next_node = (struct birus*)malloc(sizeof(struct birus));
 
 
-	//head¿¡ ¾Æ¹«°Íµµ ¾øÀ¸¸é ¾Æ¹« µ¥ÀÌÅÍµµ ¾ø´Ù´Â ¶æÀÔ´Ï´Ù.
-	//»õ·Î¿î head »ı¼º
+	//headì— ì•„ë¬´ê²ƒë„ ì—†ìœ¼ë©´ ì•„ë¬´ ë°ì´í„°ë„ ì—†ë‹¤ëŠ” ëœ»ì…ë‹ˆë‹¤.
+	//ìƒˆë¡œìš´ head ìƒì„±
 	if (head[0] == NULL) {
 		struct birus* a_node = (struct birus*)malloc(sizeof(struct birus));
 		struct birus* b_node = (struct birus*)malloc(sizeof(struct birus));
@@ -116,10 +116,10 @@ void linked(int a, int b) {
 
 	}
 	else {
-		//head°¡ nullÀÌ ¾Æ´Ï¸é ¹º °ªÀÌ ÀÖ´Ù´Â ¶æ
-		//head¸¦ µû¶ó°¡¼­ ¸¸¾à aÄÄÇ»ÅÍ°¡ ÀÌ¹Ì µé¾î¿ÍÀÖ´Ù¸é »ı¼ºx, ¾ø´Ù¸é »ı¼º o
-		//head´Â ÇÏ³ª°¡ ¾Æ´Ï´Ù. µû¶ó¼­ ¸ğµç head¸¦ ºÁ¾ßÇÑ´Ù.
-		//½ºÀ§Ä¡°¡ 0ÀÌ ¾Æ´Ï¸é »õ·Î¿î ³ëµå¸¦ ¸¸µéÁö ¾Ê¾Æµµ µÈ´Ù´Â ¶æ, ½ºÀ§Ä¡´Â °°´Ù°í Ç¥½ÃµÈ headÀÇ ÀÎµ¦½º¸¦ °¡¸®Å´
+		//headê°€ nullì´ ì•„ë‹ˆë©´ ë­” ê°’ì´ ìˆë‹¤ëŠ” ëœ»
+		//headë¥¼ ë”°ë¼ê°€ì„œ ë§Œì•½ aì»´í“¨í„°ê°€ ì´ë¯¸ ë“¤ì–´ì™€ìˆë‹¤ë©´ ìƒì„±x, ì—†ë‹¤ë©´ ìƒì„± o
+		//headëŠ” í•˜ë‚˜ê°€ ì•„ë‹ˆë‹¤. ë”°ë¼ì„œ ëª¨ë“  headë¥¼ ë´ì•¼í•œë‹¤.
+		//ìŠ¤ìœ„ì¹˜ê°€ 0ì´ ì•„ë‹ˆë©´ ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ë§Œë“¤ì§€ ì•Šì•„ë„ ëœë‹¤ëŠ” ëœ», ìŠ¤ìœ„ì¹˜ëŠ” ê°™ë‹¤ê³  í‘œì‹œëœ headì˜ ì¸ë±ìŠ¤ë¥¼ ê°€ë¦¬í‚´
 		for (int i = 0; i < 101; i++) {
 			
 			next_node = head[i];
@@ -147,7 +147,7 @@ void linked(int a, int b) {
 				}
 			}
 		}
-		//µÑ´Ù ÇØ´ç ÄÄÇ»ÅÍ°¡ ¾øÀ¸¸é »õ·Î¿î ³ëµå¸¦ »ı¼º ÈÄ, »õ·Î¿î Çìµå¿¡ ¹èÁ¤
+		//ë‘˜ë‹¤ í•´ë‹¹ ì»´í“¨í„°ê°€ ì—†ìœ¼ë©´ ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ìƒì„± í›„, ìƒˆë¡œìš´ í—¤ë“œì— ë°°ì •
 		if ((a_switch == NULL) && (b_switch == NULL)) {
 			struct birus* a_node = (struct birus*)malloc(sizeof(struct birus));
 			struct birus* b_node = (struct birus*)malloc(sizeof(struct birus));
@@ -157,7 +157,7 @@ void linked(int a, int b) {
 			a_node->next = b_node;
 			b_node->next = NULL;
 
-			//ºñ¾îÀÖ´Â head Ã£±â -> »õ·Î¿î head¿¡ a_node¸¦ ¹èÁ¤
+			//ë¹„ì–´ìˆëŠ” head ì°¾ê¸° -> ìƒˆë¡œìš´ headì— a_nodeë¥¼ ë°°ì •
 			for (int k = 0; k < 150; k++) {
 				if (head[k] == NULL) {
 					head[k] = a_node;
@@ -172,7 +172,7 @@ void linked(int a, int b) {
 			
 		}
 
-		//aÄÄÇ»ÅÍ´Â ÀÖ´Âµ¥ b ÄÄÇ»ÅÍ°¡ ¾øÀ¸¸é a°¡ ÀÖ´Â head ³¡¿¡ b¸¦ Ãß°¡ÇÑ´Ù.
+		//aì»´í“¨í„°ëŠ” ìˆëŠ”ë° b ì»´í“¨í„°ê°€ ì—†ìœ¼ë©´ aê°€ ìˆëŠ” head ëì— bë¥¼ ì¶”ê°€í•œë‹¤.
 		else if ((a_switch != NULL) && (b_switch == NULL)) {
 			struct birus* b_node = (struct birus*)malloc(sizeof(struct birus));
 			b_node->computer = b;
@@ -194,7 +194,7 @@ void linked(int a, int b) {
 			struct birus* a_node = (struct birus*)malloc(sizeof(struct birus));
 			a_node->computer = b;
 			a_node->next = NULL;
-			struct birus* next_b_node = (struct birus*)malloc(sizeof(struct birus));//¿¬»êÇØ¾ßÇÒ ´ÙÀ½ ³ëµå¸¦ ¾Ë·ÁÁØ´Ù.
+			struct birus* next_b_node = (struct birus*)malloc(sizeof(struct birus));//ì—°ì‚°í•´ì•¼í•  ë‹¤ìŒ ë…¸ë“œë¥¼ ì•Œë ¤ì¤€ë‹¤.
 			next_b_node = head[b_switch-1];
 			while (next_b_node->next != NULL) {
 
@@ -211,14 +211,14 @@ void linked(int a, int b) {
 
 		}
 		else {
-			//µÑ ´Ù ÀÖÀ¸¸é ½ºÀ§Ä¡°¡ µÑ´Ù °°ÀºÁö È®ÀÎ
+			//ë‘˜ ë‹¤ ìˆìœ¼ë©´ ìŠ¤ìœ„ì¹˜ê°€ ë‘˜ë‹¤ ê°™ì€ì§€ í™•ì¸
 			if (a_switch == b_switch) {
-				//¾Æ¹«°Íµµ ¾ÈÇØµµ µÊ^^
+				//ì•„ë¬´ê²ƒë„ ì•ˆí•´ë„ ë¨^^
 			}
 			else {
-				//¾È °°À¸¸é µÑÀ» ¿¬°áÇØÁà¾ßÇÔ
-				//a±âÁØÀ¸·Î b¸¦ ºÙ¿©ÁÖÀÚ
-				struct birus* next_a_node = (struct birus*)malloc(sizeof(struct birus));//¿¬»êÇØ¾ßÇÒ ´ÙÀ½ ³ëµå¸¦ ¾Ë·ÁÁØ´Ù.
+				//ì•ˆ ê°™ìœ¼ë©´ ë‘˜ì„ ì—°ê²°í•´ì¤˜ì•¼í•¨
+				//aê¸°ì¤€ìœ¼ë¡œ bë¥¼ ë¶™ì—¬ì£¼ì
+				struct birus* next_a_node = (struct birus*)malloc(sizeof(struct birus));//ì—°ì‚°í•´ì•¼í•  ë‹¤ìŒ ë…¸ë“œë¥¼ ì•Œë ¤ì¤€ë‹¤.
 				next_a_node = head[a_switch-1];
 				while (next_a_node->next != NULL) {
 
