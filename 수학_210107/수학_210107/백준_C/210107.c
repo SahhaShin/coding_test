@@ -32,7 +32,7 @@
 //int main() {
 //	int some = 0;
 //	
-//	int sum = -1; //someÀÌ 0ÀÏ¶§ while ¾Èµ¹¾Æ°¨
+//	int sum = -1; //someÃ€ÃŒ 0Ã€ÃÂ¶Â§ while Â¾ÃˆÂµÂ¹Â¾Ã†Â°Â¨
 //	int copy = 0;
 //	int cycle = 0;
 //
@@ -62,14 +62,14 @@
 //	return 0;
 //}
 
-//2753¹ø
+//2753Â¹Ã¸
 //#include<stdio.h>
 //int main() {
 //	int year = 0;
 //
 //	scanf("%d", &year);
 //
-//	//À±³â
+//	//Ã€Â±Â³Ã¢
 //	if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) {
 //		printf("1");
 //	}
