@@ -1,4 +1,0 @@
-﻿  1011.c
-C:\backjoon\1011_fly_me_to_the_alpha_centauri\1011_fly_me_to_the_alpha_centauri\1011.c(8,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\backjoon\1011_fly_me_to_the_alpha_centauri\1011_fly_me_to_the_alpha_centauri\1011.c(13,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  1011_fly_me_to_the_alpha_centauri.vcxproj -> C:\backjoon\1011_fly_me_to_the_alpha_centauri\Debug\1011_fly_me_to_the_alpha_centauri.exe
