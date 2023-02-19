@@ -3,12 +3,12 @@
 int dfs(int row, int col, int x_big, int y_big);
 int up_down[4] = { 1,-1,0,0 };
 int left_right[4] = { 0,0,-1,1 };
-//ÁÖ¾îÁø Å« »ç°¢Çü
+//ì£¼ì–´ì§„ í° ì‚¬ê°í˜•
 int square[101][101] = { 0, };
-//»ç°¢Çü °¹¼ö
+//ì‚¬ê°í˜• ê°¯ìˆ˜
 int count[101] = { 0, };
 
-//¿µ¿ª °¹¼ö
+//ì˜ì—­ ê°¯ìˆ˜
 int area = 0;
 
 int main() {
@@ -21,17 +21,17 @@ int main() {
 	int x2 = 0;
 	int y2 = 0;
 
-	//¿À¸§Â÷¼ø Á¤·Ä
+	//ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
 	int temp = 0;
 
 	scanf("%d%d%d" ,& y_big,&x_big,&number);
 
-	//¿µ¿ª 0 -> 1
+	//ì˜ì—­ 0 -> 1
 	for (int i = 0; i < number; i++) {
 		scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
-		//Çà
+		//í–‰
 		for (int row = y1; row < y2; row++) {
-			//¿­
+			//ì—´
 			for (int col = x1; col < x2; col++) {
 				square[row][col] = 1;
 			}
@@ -42,11 +42,11 @@ int main() {
 	
 	
 
-	//nxmÀÇ »ç°¢Çü ¼Ó ¿¬¼Ó ¿µ¿ª 0 °è»ê
+	//nxmì˜ ì‚¬ê°í˜• ì† ì—°ì† ì˜ì—­ 0 ê³„ì‚°
 
-	//Çà
+	//í–‰
 	for (int row = 0; row < y_big; row++) {
-		//¿­
+		//ì—´
 		for (int col = 0; col < x_big; col++) {
 			if (square[row][col] == 0 && square[row][col] != 2) {
 				dfs(row, col, x_big, y_big);
@@ -59,7 +59,7 @@ int main() {
 	
 	}
 
-	//¼ø¼­´ë·Î(¹öºíÁ¤·Ä)
+	//ìˆœì„œëŒ€ë¡œ(ë²„ë¸”ì •ë ¬)
 	for (int i = 0; i < area-1; i++) {
 		for (int j = 0; j < area-i-1; j++) {
 			if (count[j] > count[j + 1]) {
@@ -70,10 +70,10 @@ int main() {
 
 		}
 	}
-	//¿µ¿ªÀÇ °¹¼ö
+	//ì˜ì—­ì˜ ê°¯ìˆ˜
 	printf("%d\n", area);
 
-	//Å©±â Ãâ·Â
+	//í¬ê¸° ì¶œë ¥
 	for (int i = 0; i < area; i++) {
 		printf("%d ", count[i]);
 	}
