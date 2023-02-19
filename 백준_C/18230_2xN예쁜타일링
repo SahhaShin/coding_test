@@ -1,28 +1,28 @@
 #include<stdio.h>
 
 int main() {
-	int N = 0;//Å¸ÀÏÀÇ ±æÀÌ 2xN
-	int one = 0;//2x1Å¸ÀÏÀÇ °¹¼ö
-	int two = 0;//2x2Å¸ÀÏÀÇ °¹¼ö
+	int N = 0;//íƒ€ì¼ì˜ ê¸¸ì´ 2xN
+	int one = 0;//2x1íƒ€ì¼ì˜ ê°¯ìˆ˜
+	int two = 0;//2x2íƒ€ì¼ì˜ ê°¯ìˆ˜
 	int one_beauty[2001] = { 0, };
 	int two_beauty[2001] = { 0, };
-	int max = 0;//ÇöÀç ¾Æ¸§´Ù¿òÀÇ ¸Æ½º
+	int max = 0;//í˜„ì¬ ì•„ë¦„ë‹¤ì›€ì˜ ë§¥ìŠ¤
 	
-	int inter = 0; // Å©±â ¼øÀ¸·Î °ª ±³È¯
+	int inter = 0; // í¬ê¸° ìˆœìœ¼ë¡œ ê°’ êµí™˜
 
-	int total = 0; // °á°ú°ª,ÀüÃ¼ ¾Æ¸§´Ù¿ò
+	int total = 0; // ê²°ê³¼ê°’,ì „ì²´ ì•„ë¦„ë‹¤ì›€
 
-	int one_turn = 0; //¹Ø¿¡ ºñ±³ÇÒ ¶§ ¾²´Â °ª 2x1ÀÇ ¾Æ¸§´Ù¿ò ¼ø¼­
-	int two_turn = 0; //¹Ø¿¡ ºñ±³ÇÒ ¶§ ¾²´Â °ª 2x2ÀÇ ¾Æ¸§´Ù¿ò ¼ø¼­
+	int one_turn = 0; //ë°‘ì— ë¹„êµí•  ë•Œ ì“°ëŠ” ê°’ 2x1ì˜ ì•„ë¦„ë‹¤ì›€ ìˆœì„œ
+	int two_turn = 0; //ë°‘ì— ë¹„êµí•  ë•Œ ì“°ëŠ” ê°’ 2x2ì˜ ì•„ë¦„ë‹¤ì›€ ìˆœì„œ
 
-	//N, one, two¹Ş±â
+	//N, one, twoë°›ê¸°
 	scanf("%d %d %d", &N,&one,&two);
 
 	//one_beauty
 	for (int i = 0; i < one; i++) {
 		scanf("%d", &one_beauty[i]);
 	}
-	//one_beauty Å©±âº°·Î ÁÙ¼¼¿ì±â
+	//one_beauty í¬ê¸°ë³„ë¡œ ì¤„ì„¸ìš°ê¸°
 	for (int i = 0; i < one-1; i++) {
 		for (int j = 0; j < one-1-i; j++) {
 			if (one_beauty[j] < one_beauty[j + 1]) {
@@ -37,7 +37,7 @@ int main() {
 	for (int i = 0; i < two; i++) {
 		scanf("%d", &two_beauty[i]);
 	}
-	//two_beauty Å©±âº°·Î ÁÙ¼¼¿ì±â
+	//two_beauty í¬ê¸°ë³„ë¡œ ì¤„ì„¸ìš°ê¸°
 	for (int i = 0; i < two - 1; i++) {
 		for (int j = 0; j <two - 1-i; j++) {
 			if (two_beauty[j] < two_beauty[j + 1]) {
@@ -50,8 +50,8 @@ int main() {
 	}
 
 
-	//2x2·Î ÇÑ ¹ø Ã¤¿ì°í 2x2ÀÛÀº °Í ºÎÅÍ 2x1 µÎ°³¿Í ºñ±³ÇÏ¿© 1ÀÌ ´õ Å©¸é Å« °É·Î ¹Ù²ÙÀÚ
-	//NÀÌ ´Ù Ã¤¿öÁú¶§±îÁö µ¹¸®ÀÚ
+	//2x2ë¡œ í•œ ë²ˆ ì±„ìš°ê³  2x2ì‘ì€ ê²ƒ ë¶€í„° 2x1 ë‘ê°œì™€ ë¹„êµí•˜ì—¬ 1ì´ ë” í¬ë©´ í° ê±¸ë¡œ ë°”ê¾¸ì
+	//Nì´ ë‹¤ ì±„ì›Œì§ˆë•Œê¹Œì§€ ëŒë¦¬ì
 	while (N>0) {
 		
 		if (one_beauty[one_turn] >= two_beauty[two_turn] && one_turn < one) {
