@@ -1,4 +1,4 @@
-//2741¹ø NÂï±â
+//2741ë²ˆ Nì°ê¸°
 //#include<stdio.h>
 //int main() {
 //	int number=0;
@@ -10,7 +10,7 @@
 //	return 0;
 //}
 
-//2742¹ø ±âÂïN
+//2742ë²ˆ ê¸°ì°N
 //#include<stdio.h>
 //int main() {
 //	int number=0;
@@ -22,7 +22,7 @@
 //	return 0;
 //}
 
-//11021¹ø A+B-7
+//11021ë²ˆ A+B-7
 //#include<stdio.h>
 //int main() {
 //	int number=0;
@@ -37,7 +37,7 @@
 //	return 0;
 //}
 
-//11021¹ø A+B-8
+//11021ë²ˆ A+B-8
 //#include<stdio.h>
 //int main() {
 //	int number=0;
@@ -52,7 +52,7 @@
 //	return 0;
 //}
 
-//11021¹ø A+B-5
+//11021ë²ˆ A+B-5
 //#include<stdio.h>
 //int main() {
 //
@@ -69,7 +69,7 @@
 //	return 0;
 //}
 
-//11021¹ø A+B-4 -->ºí·Î±×
+//11021ë²ˆ A+B-4 -->ë¸”ë¡œê·¸
 //#include<stdio.h>
 //int main() {
 //
@@ -85,7 +85,7 @@
 //	return 0;
 //}
 
-//10818¹ø ÃÖ¼Ò, ÃÖ´ë -> ºí·Î±× max ¸¦ 0À¸·ÎÇØ¼­ Æ²¸²
+//10818ë²ˆ ìµœì†Œ, ìµœëŒ€ -> ë¸”ë¡œê·¸ max ë¥¼ 0ìœ¼ë¡œí•´ì„œ í‹€ë¦¼
 //#include<stdio.h>
 //int main() {
 //	int number = 0;
