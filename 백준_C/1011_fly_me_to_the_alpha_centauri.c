@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int main() {
-	//Å×½ºÆ® ÄÉÀÌ½º ÀÔ·Â
+	//í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ ì…ë ¥
 	int test = 0;
 	int k = 0;
 	int try_program = 0;
@@ -13,7 +13,7 @@ int main() {
 		scanf("%d%d", &start, &end);
 
 		while (start != end) {
-			//Ã¹¹øÂ° ½Ãµµ¿Í ¸¶Áö¸· ½Ãµµ´Â ¹«Á¶°Ç 1¸¸Å­ °£´Ù.
+			//ì²«ë²ˆì§¸ ì‹œë„ì™€ ë§ˆì§€ë§‰ ì‹œë„ëŠ” ë¬´ì¡°ê±´ 1ë§Œí¼ ê°„ë‹¤.
 			if (try_program == 0 || start==end-1) {
 				start= start+1;
 				try_program++;
