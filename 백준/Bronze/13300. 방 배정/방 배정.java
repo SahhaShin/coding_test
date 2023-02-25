@@ -22,8 +22,8 @@ public class Main {
 		int result=0;
 		for(int i=0;i<room.length;i++) {
 			for(int j=0;j<room[0].length;j++) {
-				if(room[i][j]%2==0) result+=room[i][j]/2;
-				else result+=room[i][j]/2+room[i][j]%2; //ex 5 -> 2+3 / 1 -> 0+1
+				if(room[i][j]%room_max==0) result+=room[i][j]/room_max;
+				else result+=room[i][j]/room_max+room[i][j]%room_max; //ex 5 -> 2+3 / 1 -> 0+1
 			}
 		}
 		
