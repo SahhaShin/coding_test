@@ -7,37 +7,37 @@ class Solution
 {
 	public static void main(String args[]) throws Exception
 	{
-		// 1289
 		Scanner sc = new Scanner(System.in);
-		//1. TEST CASE
+		
 		int t = sc.nextInt();
 		
-		for(int T=1;T<t+1;T++) {
-			//2. 메모리 원래값
-			char[] memory=sc.next().toCharArray();
-			
-			int count=0;
+		//모두 0으로 만드는 방법과 동일
 		
+		
+		for(int T=1;T<t+1;T++) {
+			int count=0;
+			char[] memory = sc.next().toCharArray();
+			int[] mem2 = new int[memory.length];
 			
+			//int형으로 바꾸기 
 			for(int i=0;i<memory.length;i++) {
-				if((memory[i]-'0')==1) {
-					count++;
-					for(int j=i;j<memory.length;j++) {
-						memory[j]=(char) ((1- (memory[j]-'0'))+48);
+				mem2[i]=memory[i]-'0';
+			}
+
+			
+			
+			for(int i=0;i<mem2.length;i++) {
+
+				if(mem2[i]==1) {
+					for(int j=i;j<mem2.length;j++) {
+						mem2[j]=1-mem2[j];
 					}
-					if(check(memory)==1) break;
+					count++;
 				}
 			}
 			
 			System.out.println("#"+T+" "+count);
-		}
-	}
-    public static int check(char[] arr) {
-		int flag=1;
-		for(int i=0;i<arr.length;i++) {
-			if(arr[i]!='0') flag=0;
-		}
-		
-		return flag;
+			
+		}//test case end
 	}
 }
