@@ -46,4 +46,5 @@ public class Solution {
 			System.out.println("#"+T+" "+profit);
 		}//test case end
 	}
+
 }
