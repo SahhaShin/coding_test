@@ -4,63 +4,38 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		//난쟁이의 키합은 100 
 		Scanner sc = new Scanner(System.in);
-		int[] cm = new int[9];
-		
-		//키 받기 
-		for(int i=0;i<9;i++) {
+		int[] cm = new int[10]; //1~9번 난쟁이 
+		int total = 0; //난쟁이 전체 키 
+		for(int i=1;i<=9;i++) {
 			cm[i]=sc.nextInt();
+			total+=cm[i];
 		}
 		
-		//브루트포스 
+		//sort
 		Arrays.sort(cm);
 		
-		int[] result = new int[7];
-		int total=0;
-		
-		go: for(int a=0;a<9;a++) {
-			for(int b=0;b<9;b++) {
-				if(b!=a) {
-					for(int c=0;c<9;c++) {
-						if(c!=a && c!=b) {
-							for(int d=0;d<9;d++) {
-								if(d!=a && d!=b && d!=c) {
-									for(int e=0;e<9;e++) {
-										if(e!=a && e!=b && e!=c && e!=d) {
-											for(int f=0;f<9;f++) {
-												if(f!=a && f!=b && f!=c && f!=d && f!=e) {
-													for(int g=0;g<9;g++) {
-														if(g!=a && g!=b && g!=c && g!=d && g!=e) {
-															total=cm[a]+cm[b]+cm[c]+cm[d]+cm[e]+cm[f]+cm[g];
-															if(total==100) {
-																result[0]=cm[a];
-																result[1]=cm[b];
-																result[2]=cm[c];
-																result[3]=cm[d];
-																result[4]=cm[e];
-																result[5]=cm[f];
-																result[6]=cm[g];
-																break go;
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
+		//2명 잡아서 전체 키에서 뺐을 때 100이면 난쟁이 확정 
+		int one=0;//난쟁이 1명 인덱스 저장 
+		int two=0;//난쟁이 1명 인덱스 저장 
+		go : for(int i=1;i<=9;i++) {
+			for(int j=i+1;j<=9;j++) {
+				if(total-(cm[i]+cm[j])==100) {
+					one=i;
+					two=j;
+					break go;
 				}
 			}
-				
 		}
-		
-		Arrays.sort(result);
-		for(int i=0;i<7;i++) {
-			System.out.println(result[i]);
+		//오름차 순으로 난쟁이 순서 출력 
+		for(int i=1;i<=9;i++) {
+			if(i==one || i ==two) {
+				continue;
+			}
+			else {
+				System.out.println(cm[i]);
+			}
 		}
 	}
+
 }
