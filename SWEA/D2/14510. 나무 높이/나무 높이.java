@@ -48,20 +48,21 @@ public class Solution {
 				i++;
 				day++;
 				
-				//홀수 +1
-				if(i%2==1) {
-					for(int j=1;j<=n;j++) {
-						//홀수중 가장 큰 애 {인덱스, 값} 저장 -> 없으면 짝수 중 가장 큰 애 
-						//또한 이제 키가 필요하지 않는 나무의 경우 제외 
-						if(need[j]%2==1 && hole[0][1]<need[j] && need[j]!=0) {
-							hole[0][0]=j;
-							hole[0][1]=need[j];
-						}
-						else if(need[j]%2==0 && zzak[0][1]<need[j] && need[j]!=0) {
-							zzak[0][0]=j;
-							zzak[0][1]=need[j];
-						}
+				//홀수중 가장 큰 애 {인덱스, 값} 저장 -> 없으면 짝수 중 가장 큰 애 
+				//또한 이제 키가 필요하지 않는 나무의 경우 제외 
+				for(int j=1;j<=n;j++) {
+					if(need[j]%2==1 && hole[0][1]<need[j] && need[j]!=0) {
+						hole[0][0]=j;
+						hole[0][1]=need[j];
 					}
+					else if(need[j]%2==0 && zzak[0][1]<need[j] && need[j]!=0) {
+						zzak[0][0]=j;
+						zzak[0][1]=need[j];
+					}
+				}
+				
+				//홀수-> 필요한 키에서 -1 
+				if(i%2==1) {
 					//홀수 중 가장 큰 애가 없으면 짝수로 
 					if(hole[0][0]==0) {
 						//count 1남았고, 짝수라면 , 홀수번째 들어왔을 때 건너뛴다.
@@ -80,20 +81,8 @@ public class Solution {
 					}
 				}//홀수 end
 				
-				//짝수 +1
+				//짝수 -> 필요한 키에서 -2
 				else if(i%2==0) {
-					for(int j=1;j<=n;j++) {
-						//짝수중 가장 큰 애 인덱스, 값 저장 -> 없으면 짝수 중 가장 큰 애 
-						//또한 이제 키가 필요하지 않는 나무의 경우 제외
-						if(need[j]%2==1 && hole[0][1]<need[j] && need[j]!=0) {
-							hole[0][0]=j;
-							hole[0][1]=need[j];
-						}
-						if(need[j]%2==0 && zzak[0][1]<need[j] && need[j]!=0) {
-							zzak[0][0]=j;
-							zzak[0][1]=need[j];
-						}
-					}
 					//짝수 중 가장 큰 애가 없으면 홀수로 
 					if(zzak[0][0]==0) {
 						if(need[hole[0][0]]>=2)need[hole[0][0]]-=2;
