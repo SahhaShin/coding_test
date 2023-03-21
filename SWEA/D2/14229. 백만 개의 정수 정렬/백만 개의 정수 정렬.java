@@ -1,85 +1,84 @@
 import java.util.Scanner;
 
 public class Solution {
-	private static void mergeSort(int[] arr) {
-		int[] tmp = new int[arr.length];//임시 배열
-		mergeSort(arr,tmp,0,arr.length-1);//배열, 임시배열, 시작, 끝 전달 
-		//본격적인 재귀 호출 시작 
+	//퀵정렬로 풀어보자
+    
+	private static void quickSort(int[] arr) {
+		//arr, 첫값 , 끝값 
+		//재귀 시작 
+		quickSort(arr,0,arr.length-1);
+	}
+	private static void quickSort(int[] arr, int start, int end) {
+		//배열 방의 시작과 끝 영역 안에서 파티션을 나누고, 
+		//파티션의 오른쪽 방 첫번째 값을 받아올 것이다.
+		int part2 = partition(arr,start,end);
+		
+		//오른쪽 파티션이 시작점 바로 다음에서 시작한다면 
+		//왼쪽 파티션의 데이터는 하나라는 소리다.
+		//즉 정렬할 필요가 없다.
+		
+		//때문에 오른쪽 파티션이 시작점에서 한개 이상 차이가 날 때만 돈다.
+		if(start<part2-1) {
+			quickSort(arr,start,part2-1);//첫번째 파티션 start~2번째 파티션 시작점 전 
+		}
+		if(part2<end) {
+			//오른쪽 배열방의 파티션이 1개 이상일 때만 호출
+			quickSort(arr,part2,end);//2번째 파티션 
+		}
+		
 	}
 	
-	//분할과정 
-	private static void mergeSort(int[] arr, int[] tmp, int start, int end) {
-		//시작인덱스가 끝 인덱스보다 작을 동안만 재귀호출을 할 것이다.
-		if(start<end) {
-			int mid = (start+end)/2;
-			mergeSort(arr,tmp,start,mid);//이분할의 앞쪽 
-			mergeSort(arr,tmp,mid+1,end);//이분할의 뒷쪽 
+	//배열방의 파티션을 나누는 함수 
+	private static int partition(int[] arr, int start, int end) {
+		//피봇은 배열의 중간으로 한다.
+		int pivot = arr[(start+end)/2];
+		
+		//시작점이 끝지점보다 작거나 같을 때만 반복
+		while(start<=end) {
+			//시작 지점에서 시작하는 포인트는 배열방의 값이 피봇값보다 작으면 무시하고 계속 넘어간다.
+			//시작지점에서 시작하는 포인트의 배열방의 값이 피봇값보다 크면 스탑
+			while(arr[start]<pivot) start++;
 			
-			//재귀가 돌아왔을 때는 왼쪽과 오른쪽이 정렬되어 돌아와야 한다.
-			merge(arr,tmp,start,mid,end);		
+			//엔드포인트는 맨끝에서부터 배열방의 값이 피봇값보다 크면 무시하고 계속 건너뛰어 앞쪽으로 온다.
+			//엔드포인트의 배열방의 값이 피봇값보다 작으면 스탑 
+			while(arr[end]>pivot)end--;
+			
+			//돌던 시작점과 끝값이 서로 만났다가 지나치지 않았는지 확인하고,
+			if(start<=end) {
+				//만나거나 지나치지 않았다면 두 값을 스왑한다.
+				swap(arr,start,end);
+				start++;
+				end--;
+			}
 		}
+		
+		//위 과정을 만나거나 지나칠때까지 반복하면 스타트 포인터에 
+		//새로 나눌 오른쪽 파티션의 첫번째 배열방 인덱스가 들어간다.
+		return start;
 	}
-
-	//병합과정 
-	//arr : 배열, 정렬된 결과를 반복적으로 저장하고 있는 배열의 포인터 
-	//tmp : 임시저장장소 
-	//mid : 파티션을 나눴던 중간 인덱스 
-	private static void merge(int[] arr, int[] tmp, int start, int mid, int end) {
-		//임시저장소에 필요한 만큼 배열을 복사해준다.
-		for(int i=start;i<=end;i++) {
-			tmp[i]=arr[i];
-		}
-		//배열이 중간지점을 기점으로 하나로 붙어있다. 
-		int part1 = start;//첫번째 배열방의 첫번째 방 인덱스 
-		int part2 = mid+1;//두번째 배열방의 첫번째 방 인덱스 
-		
-		//양쪽 방에서 작은 배열 값을 하나씩 복사할 때마다 결과 배열방에 어디에 저장하는지 index
-		//작은거 값 복사 후 다음엔 어디 저장해야하는지 기억하고 있는다. 
-		int index = start;
-		
-		//첫번째 배열이 끝까지 가거나 두번째 배열이 끝까지 갈 때까지 반복문을 돌린다.
-		//이 둘 중 하나가 끝까지 가면 끝난다.
-		while(part1<=mid && part2 <= end) {
-			//첫번째 배열의 첫값보다 두번째 배열의 첫값이 크거나 같다면 
-			if(tmp[part1]<=tmp[part2]) {
-				arr[index]=tmp[part1];//작은 게 먼저 arr 차지 
-				part1++;//첫번째 방 위치를 다음으로 옮긴다.
-			}
-			else {
-				//두번째 배열 값이 더 작다면 
-				arr[index]=tmp[part2];//작은 게 먼저 arr 차지 
-				part2++;//두 번째 방 위치를 다음으로 옮긴다.
-			}
-			index++; //arr 배열의 다음 값을 넣으러 간다.
-		}
-		
-		//만약 2번째 배열은 arr다 넣었는데, 1번째 배열의 값이 아직 남아있다면?
-		//1번 배열의 마지막 mid인덱스에서 첫번째 배열이 찬만큼 빼준만큼 돌린다.
-		for(int i=0;i<=mid-part1;i++) {
-			arr[index+i]=tmp[part1+i];//남은값 붙여주기 
-		}
-		
-		//반대로 뒷쪽배열이 아직 남아있다면?
-		//2번째 배열은 최종배열의 뒷쪽에 이미 자리하고 있기 때문에 신경안써도 된다.
+	
+	//2개의 데이터 스왑 
+	private static void swap(int[] arr, int start, int end) {
+		int tmp = arr[start];
+		arr[start] = arr[end];
+		arr[end]=tmp;
 		
 	}
 	
-	//결과 호출 프린터
+	//배열 출력 함수
 	private static void printArray(int[] arr) {
 		for(int data : arr) {
-			System.out.print(data + ", ");
+			System.out.print(data+", ");
 		}
 		System.out.println();
 	}
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int[] nums = new int[1000000];
+		int[] nums=new int[1000000];
 		for(int i=0;i<1000000;i++) {
 			nums[i]=sc.nextInt();
 		}
-		mergeSort(nums);
+		quickSort(nums);
 		System.out.println(nums[500000]);
 	}
-
 }
