@@ -41,14 +41,13 @@ public class Solution {
 			// 초기화
 			win = 0;
 			lose = 0;
-            total_card=new boolean[19];
+			total_card=new boolean[19];
 		}
 	}
 
 	/**
 	 * 인영이가 내는 카드 순서에 따라 규영이의 승패가 달라짐 규영이가 내는 카드 순서는 변하지 않음 높은 수 카드를 1장 내면 이김 -> 두
-	 * 카드 합만큼 점수 가져감 지면 아무런 점수 없음 무승부일 수도 있음 총 9라운드 진행 (round == depth) card_idx :
-	 * 인영카드 중 어떤 인덱스의 카드를 넣을 것인지 판단
+	 * 카드 합만큼 점수 가져감 지면 아무런 점수 없음 무승부일 수도 있음 총 9라운드 진행 (round == depth)
 	 */
 	static public void game(int round) {
 		if (round == 10) {
@@ -72,13 +71,16 @@ public class Solution {
 			return; // 9 게임 승부 끝 종료
 		}
 
+		
 		for(int i=1;i<=9;i++) {
 			인영카드순서[round] = 인영카드[i];// ex) 첫번째 라운드에서 인영카드 1번을 넣는다.
 			if (!sel[i]) {
 				sel[i] = true;
 				game(round + 1);// 이 카드 선택
 				sel[i] = false;
-			}	
+			}
+			
 		}
 	}
+
 }
