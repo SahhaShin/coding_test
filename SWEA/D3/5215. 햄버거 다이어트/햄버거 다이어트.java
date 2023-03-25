@@ -28,10 +28,9 @@ public class Solution {
 			powerset(0,0,0);
 			
 			System.out.println("#"+T+" "+maxScore);
-            
-            //초기화
-            maxScore=maxScore = Integer.MIN_VALUE;
-            
+			
+			//초기화
+			maxScore = Integer.MIN_VALUE;
 		}//test case end
 	}
 	
