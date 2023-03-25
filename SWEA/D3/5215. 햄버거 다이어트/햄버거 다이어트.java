@@ -1,56 +1,52 @@
 import java.util.Scanner;
 
 public class Solution {
-
-	static int ingredient_count;
-	static int limit_cal;
-	static int[][] score_cal;
-	static int max_score = 0;// 가장높은맛점수
-
+	/**
+	 * 주어진 제한 칼로리 이하의 조합중에서 가장 맛에 대한 점수가 높은 햄버거의 점수를 출력
+	 * 재료 갯수는 정해지지 않음 
+	 * 순서는 중요하지 않음 -> 재료1 재료2, 재료2 재료1은 서로 같은 것임 
+	 * => 부분집합 
+	 * */
+	static int[][] ingredient;//재료의 점수 칼로리 
+	static int N,L;
+	static int maxScore = Integer.MIN_VALUE;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
-		for (int T = 1; T < t + 1; T++) {
-			// 1.재료의 수 / 제한칼로리
-			ingredient_count = sc.nextInt();
-			limit_cal = sc.nextInt();
-
-			// 2. 재료 수만큼의 맛점수 / 칼로리
-			score_cal = new int[ingredient_count ][2];
-			for (int i = 0; i < ingredient_count; i++) {
-				score_cal[i][0] = sc.nextInt();
-				score_cal[i][1] = sc.nextInt();
-			}
-
-			// 3. 구현
-			dfs(0,0,0);
-			System.out.println("#" + T + " " + max_score);
-			max_score = 0;// 초기화
-
-		} // test case end
-
-	}
-
-	static public void dfs(int depth, int score, int cal) {
-		// 1. 만약 limit cal보다 넘치면 못씀!
-		if (cal > limit_cal)
-			return;
-
-		// 2. 만약 모든 재료를 고려했다면 크기 비교 후 끝
-		// limit cal보다 넘치지 않아도 모든 재료를 고려했음에도 끝나지 않았다면 여기서 끝남
-		if (depth == ingredient_count) {
-			if (max_score < score) {
-				max_score = score;// 가장 높은 맛점수와 비교 후 갱신
-			}
-			return;
-		}
-
-		// 3. 만약 limit cal보다 작거나 같다면
-		//limit cal보다 커질 때까지 혹은 모든 재료를 고려할 때까지 계속 재귀 돌리기
-		//요소 선택 사항을 보여줄 필요는 없으니 visited 리스트는 생략
 		
-		dfs(depth + 1,score+score_cal[depth][0],cal+score_cal[depth][1]);// depth번째 재료를 사용했어!
-		dfs(depth + 1,score,cal);// depth번째 재료를 안했어!
-
+		for(int T=1;T<=t;T++){
+			N = sc.nextInt();//재료의 수 
+			L = sc.nextInt();//제한 칼로리 
+			
+			//재료의 점수 칼로리 
+			ingredient = new int[N][N];
+			for(int i=0;i<N;i++) {
+				ingredient[i][0]=sc.nextInt();
+				ingredient[i][1]=sc.nextInt();
+			}
+			
+			powerset(0,0,0);
+			
+			System.out.println("#"+T+" "+maxScore);
+            
+            //초기화
+            maxScore=maxScore = Integer.MIN_VALUE;
+            
+		}//test case end
+	}
+	
+	/**
+	 * 제한 칼로리 이하의 칼로리이면 높은 점수를 갱신할 것 
+	 * 제한 칼로리를 넘으면 멈출 것
+	 * 재료 수를 모두 고려했으면 멈출 것
+	 * depth의 재료를 선택했을 때와 선택안했을 때를 고려할 것 == powerset 부분집합 
+	 * */
+	static public void powerset(int depth, int calory, int score) {
+		if(calory<=L)maxScore=Math.max(maxScore, score);
+		if(calory>L) return;
+		if(depth==N) return;
+		
+		powerset(depth+1,calory+ingredient[depth][1],score+ingredient[depth][0]); //해당 재료를 포함하는 경우 
+		powerset(depth+1,calory,score);// 해당 재료를 포함하지 않는 경우 	
 	}
 }
