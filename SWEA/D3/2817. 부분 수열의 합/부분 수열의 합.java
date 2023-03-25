@@ -1,53 +1,65 @@
 import java.util.Scanner;
 
 public class Solution {
+
+	/**
+	 * 최소 1개 이상의 수를 선택하여 그 합이 K가 되는 경우의 수 
+	 * => 부분 집합 문제 
+	 * */
+	
 	static int[] nums;
-	static int k;
-	static int n;
-	static int count=0;
+	static int[] sel;
+	static boolean[] visited;
+	static int N, K, result;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int t = sc.nextInt();//test case
+		int t = sc.nextInt();
 		
-		for(int T=1;T<t+1;T++) {
-			n = sc.nextInt();//n개의 자연수
-			k = sc.nextInt();//합이 k
+		for(int T=1;T<=t;T++) {
+			N = sc.nextInt();//수의 갯수
+			K = sc.nextInt();//합
 			
-			nums=new int[n];//n개의 자연수 바구니
-			
-			//n개의 자연수 입력
-			for(int i=0;i<n;i++) {
+			//N만큼 수 입력 받기 
+			nums = new int[N];
+			sel = new int[N];
+			visited = new boolean[N];
+			for(int i=0;i<N;i++) {
 				nums[i]=sc.nextInt();
 			}
 			
-			//연산 함수 접근
-			k_count(0,0);
+			powerset(0);
 			
-			System.out.println("#"+T+" "+count);
+			System.out.println("#"+T+" "+result);
 			
-			count=0;//다음 테스트 케이스를 위해 초기화 
-		}//test case
+			//초기화
+			result=0;
+		}//TEST CASE END
+
 	}
 	
-	//합이 k가 되는 수열의 갯수를 구하는 함수
-	static public void k_count(int idx,int sum) {
+	static public void powerset(int depth) {
+		//기저조건 
 		
-		//만약 합이 k가 되면 count +1 -> 종료
-		if(sum==k) {
-			count++;
+		if(depth==N) {
+			int sum=0;
+			for(int i=0;i<N;i++) {
+				
+				//선택 안된 요소들 빼고 합을 더해줘 
+				if(sel[i]!=0) {
+					//System.out.print(sel[i]+" ");//TEST 
+					sum+=sel[i];
+				}
+			}
+			//System.out.println("sum = "+sum);//TEST 
+			if(sum==K) result++;
 			return;
 		}
 		
-		//만약 합이 k를 넘으면 그냥 종료
-		if(sum>k) return;
-			
-		//모든 경우의 수를 따졌다면 (idx==n-1) 종료
-		//합이 k가 되지 않았다는 거니까 count++은 해주지 않음
-		if(idx==n) return;
-			
-		//만약 합이 k를 넘지 않으면 다음 조합 찾으러 가기
-		k_count(idx+1,sum+nums[idx]); //이 수를 선택함
-		k_count(idx+1,sum); //이 수를 선택 안함
+		sel[depth]=nums[depth];
+		powerset(depth+1);
+		
+		sel[depth]=0;
+		powerset(depth+1);//depth3이 되었을 때 뭐 하나는 선택 안되어 있는 경우 
+		
 	}
-
 }
