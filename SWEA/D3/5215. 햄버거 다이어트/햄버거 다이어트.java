@@ -1,51 +1,68 @@
 import java.util.Scanner;
 
 public class Solution {
-	/**
-	 * 주어진 제한 칼로리 이하의 조합중에서 가장 맛에 대한 점수가 높은 햄버거의 점수를 출력
-	 * 재료 갯수는 정해지지 않음 
-	 * 순서는 중요하지 않음 -> 재료1 재료2, 재료2 재료1은 서로 같은 것임 
-	 * => 부분집합 
-	 * */
-	static int[][] ingredient;//재료의 점수 칼로리 
-	static int N,L;
-	static int maxScore = Integer.MIN_VALUE;
+	static Ingredient[] InList;//재료리스트
+	static int N,C;
+	static int result;//높은 점수 저장
+	static class Ingredient{
+		int score;
+		int calory;
+		public Ingredient(int score, int calory) {
+			super();
+			this.score = score;
+			this.calory = calory;
+		}
+		
+	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int t = sc.nextInt();
+		int t = sc.nextInt();//test case 
 		
-		for(int T=1;T<=t;T++){
-			N = sc.nextInt();//재료의 수 
-			L = sc.nextInt();//제한 칼로리 
+		for(int T = 1;T<t+1;T++) {
+			N = sc.nextInt();//재료 갯수
+			C = sc.nextInt();//제한 칼로리
 			
-			//재료의 점수 칼로리 
-			ingredient = new int[N][N];
+			//재료 갯수만큼 정보 받기
+			InList = new Ingredient[N];
 			for(int i=0;i<N;i++) {
-				ingredient[i][0]=sc.nextInt();
-				ingredient[i][1]=sc.nextInt();
+				//점수와 칼로리 넣기
+				InList[i]=new Ingredient(sc.nextInt(),sc.nextInt());
 			}
 			
-			powerset(0,0,0);
+			//입력 끝
 			
-			System.out.println("#"+T+" "+maxScore);
+			powerSet(0,0,0); //만족도 높은 햄버거 만들기
 			
-			//초기화
-			maxScore = Integer.MIN_VALUE;
+			System.out.println("#"+T+" "+result);//결과 출력
+			
+			result=0;//초기화
+			
+			
 		}//test case end
 	}
-	
+
 	/**
-	 * 제한 칼로리 이하의 칼로리이면 높은 점수를 갱신할 것 
-	 * 제한 칼로리를 넘으면 멈출 것
-	 * 재료 수를 모두 고려했으면 멈출 것
-	 * depth의 재료를 선택했을 때와 선택안했을 때를 고려할 것 == powerset 부분집합 
+	 * 같은 재료 뽑으면 안됨 = 중복안됨
+	 * 순서는 중요하지 않다. 1,3,5번 재료나 3,5,1번 재료나 같다.
+	 * => 부분집합
 	 * */
-	static public void powerset(int depth, int calory, int score) {
-		if(calory<=L)maxScore=Math.max(maxScore, score);
-		if(calory>L) return;
-		if(depth==N) return;
+	
+	public static void powerSet(int depth, int score, int calory) {
+		//칼로리가 제한 칼로리보다 작으면 높은 점수 갱신
+		if(calory<=C) {
+			result=Math.max(score, result);
+		}
 		
-		powerset(depth+1,calory+ingredient[depth][1],score+ingredient[depth][0]); //해당 재료를 포함하는 경우 
-		powerset(depth+1,calory,score);// 해당 재료를 포함하지 않는 경우 	
+		//칼로리가 제한 칼로리를 넘으면 그만!
+		if(calory>C) return;
+		
+		if(depth == N) return; //모든 재료 고려 해줬다.
+		
+		//이 재료 선택
+		powerSet(depth+1,score+InList[depth].score, calory+InList[depth].calory);
+		
+		//이 재료 선택 안함
+		powerSet(depth+1,score, calory);
+		
 	}
 }
