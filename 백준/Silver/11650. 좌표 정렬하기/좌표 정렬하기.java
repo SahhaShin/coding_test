@@ -1,38 +1,47 @@
-import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.PriorityQueue;
 
-public class Main {
+public class Main
+{
+    static PriorityQueue<Point> points = new PriorityQueue<>();
 
-	static class Node implements Comparable<Node>{
-		int x;
-		int y;
-		
-		public Node(int x, int y) {
-			super();
-			this.x = x;
-			this.y = y;
-		}
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        int N = sc.nextInt();
 
-		@Override
-		public int compareTo(Node o) {
-			if(this.x>o.x || this.x<o.x) return this.x>o.x?1:-1;
-			else return this.y>o.y?1:-1;
-		}
-	}
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		PriorityQueue<Node> pq = new PriorityQueue<>();
-		
-		for(int i=0;i<N;i++) {
-			pq.add(new Node(sc.nextInt(),sc.nextInt()));
-		}
-		
-		for(int i=0;i<N;i++) {
-			Node cur = pq.poll();
-			System.out.println(cur.x+" "+cur.y);
-		}
+        for(int i=0;i<N;i++){
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            points.add(new Point(x, y));
+        }
 
-	}
+        //입력끝 정렬끝
 
+        for(int i=0;i<N;i++){
+            Point point = points.poll();
+            System.out.println(point.x+ " " + point.y);
+        }
+        
+    }
+
+    public static class Point implements Comparable<Point>{
+        int x;
+        int y;
+        public Point(int x, int y){
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public int compareTo(Point o){
+            if(this.x==o.x){
+                return this.y>o.y?1:-1;
+            }
+            else{
+                return this.x>o.x?1:-1;
+            }
+        }
+    }
 }
