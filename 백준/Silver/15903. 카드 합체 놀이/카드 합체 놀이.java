@@ -7,7 +7,7 @@ import java.io.*;
 class Main {
     
     static int N;
-    static long[] card;
+    static List<Long> card;
     
     public static void main(String[] args) throws Exception {
         // 카드수는 최대 1000개, 카드 숫자는 백만까지 나올 수 있음 -> long(카드, 결과)
@@ -21,25 +21,27 @@ class Main {
 
         String cards = br.readLine();
         st = new StringTokenizer(cards," ");
-        card = new long[st.countTokens()];
+        card = new ArrayList<>();
         for(int i=0;i<N;i++){
-            card[i] = Long.parseLong(st.nextToken());
+            card.add(Long.parseLong(st.nextToken()));
         }
 
         //입력 끝
 
         for(int i=0;i<M;i++){
-            Arrays.sort(card);
+            Collections.sort(card);
             
-            long sum = card[0] + card[1];
-            card[0] = sum;
-            card[1] = sum;
+            long sum = card.get(0) + card.get(1);
+            card.add(sum);
+            card.add(sum);
+            card.remove(0);
+            card.remove(0);
         }
 
         //3. 결과
         long sum = 0;
         for(int i=0;i<N;i++){
-            sum+=card[i];
+            sum+=card.get(i);
         }
 
         System.out.println(sum);
