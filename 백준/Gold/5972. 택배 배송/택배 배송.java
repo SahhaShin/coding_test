@@ -1,85 +1,86 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
-public class Main {
-	
-	static int[] dist;
-	static List<Node>[]adjList;
-	static int N,M;
-	
-	static class Node implements Comparable<Node>{
-		int num;
-		int cow;
-		public Node(int num, int cow) {
-			super();
-			this.num = num;
-			this.cow = cow;
-		}
-		@Override
-		public int compareTo(Node o) {
-			return this.cow>o.cow?1:-1;
-		}
-	}
+class Main {
+    static int N, M;
+    static List<Node>[] adj;
+    static int[] dist;
+    static int INF = Integer.MAX_VALUE;
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		N = sc.nextInt();//헛간수
-		M = sc.nextInt();//소들의 길, 양방향 길
-		
-		//초기화
-		dist = new int[N+1];//N번 헛간까지 가는 최소의 여물
-		for(int i=0;i<N+1;i++) {
-			dist[i]=Integer.MAX_VALUE;
-		}
-		
-		adjList = new ArrayList[N+1];
-		for(int i=0;i<N+1;i++) {
-			adjList[i] = new ArrayList<>();
-		}
-		
-		for(int i=0;i<M;i++) {
-			int path1 = sc.nextInt();
-			int path2 = sc.nextInt();
-			int cow = sc.nextInt();
-			adjList[path1].add(new Node(path2, cow));
-			adjList[path2].add(new Node(path1, cow));
-		}
-		
-		//입력끝
-		
-		dijkstra();
+        String NM = br.readLine();
+        StringTokenizer st = new StringTokenizer(NM, " ");
 
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
-		System.out.println(dist[N]);
-	}
-	
-	public static void dijkstra() {
-		PriorityQueue<Node> q = new PriorityQueue<>();
-		boolean[] visited = new boolean[N+1];
-		
-		q.add(new Node(1,0));
-		dist[1]=0;
-		
-		while(!q.isEmpty()) {
-			Node cur = q.poll();
-			
-			visited[cur.num]=true;//큐에서 나오는 순간 이 길을 선택한 것임
-			
-			for(int i=0;i<adjList[cur.num].size();i++) {
-				Node next = adjList[cur.num].get(i);
-				
-				if(visited[next.num]) continue;//이미 선택된 길을 또 선택하지 않는다.
-				
-				
-				if(dist[next.num]>dist[cur.num]+next.cow) {
-					dist[next.num]=dist[cur.num]+next.cow;
-					q.add(new Node(next.num,dist[next.num]));
-				}
-			}
-		}
-		
-	}
+        adj = new ArrayList[N+1];
+        for(int i=0;i <N+1; i++){
+            adj[i] = new ArrayList<>();
+        }
 
+        for(int i=0; i<M; i++){
+            String ABC = br.readLine();
+            st = new StringTokenizer(ABC, " ");
+            int A = Integer.parseInt(st.nextToken());
+            int B = Integer.parseInt(st.nextToken());
+            int C = Integer.parseInt(st.nextToken());
+
+            adj[A].add(new Node(B, C));
+            adj[B].add(new Node(A, C));
+        }
+
+        //입력 끝
+
+        //1. dist 최대값으로 초기화
+        dist = new int[N+1];
+        Arrays.fill(dist, INF);
+
+        //2. 다익스트라
+        System.out.println(Dijkstra());
+
+    }
+    
+    public static int Dijkstra(){
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        boolean[] visited = new boolean[N+1]; 
+        
+        dist[1] = 0;
+        pq.offer(new Node(1, 0));
+
+        while(!pq.isEmpty()){
+            Node cur = pq.poll();
+            visited[cur.to] = true;
+
+            if(cur.to == N){
+                return cur.cow;
+            }
+
+            for(Node next: adj[cur.to]){
+                if(visited[next.to]) continue;
+
+                if(dist[next.to] > dist[cur.to]+next.cow){
+                    dist[next.to] = dist[cur.to]+next.cow;
+                    pq.offer(new Node(next.to, dist[next.to]));
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    public static class Node implements Comparable<Node>{
+        int to;
+        int cow;
+        public Node(int to, int cow){
+            this.to = to;
+            this.cow = cow;
+        }
+
+        @Override
+        public int compareTo(Node o){
+            return this.cow>o.cow?1:-1;
+        }
+    }
 }
