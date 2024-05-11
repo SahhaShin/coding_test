@@ -1,0 +1,6 @@
+-- 모든 동물의 정보
+-- ANIMAL_ID순
+
+SELECT *
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
