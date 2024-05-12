@@ -1,0 +1,7 @@
+-- 2(0010 = 2)번 형질을 보유하지 않음
+-- 1(0001 = 1)번이나 3(0100 = 4)번 형질을 보유
+-- 대장균 개체의 수(COUNT)를 출력
+
+SELECT COUNT(*) AS COUNT
+FROM ECOLI_DATA
+WHERE (GENOTYPE&1 OR GENOTYPE&4) AND NOT GENOTYPE&2
